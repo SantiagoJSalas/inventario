@@ -1,0 +1,21 @@
+# Archivos generados por Maven (se regeneran en cada compilación)
+target/
+
+# Configuración de IntelliJ IDEA
+.idea/
+*.iml
+
+# Configuración de VS Code
+.vscode/
+
+# Configuración de Eclipse
+.classpath
+.project
+.settings/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
