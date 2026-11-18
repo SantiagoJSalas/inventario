@@ -1,5 +1,7 @@
 # Inventario — Demostración de gestión de pruebas con GitHub
 
+![Pruebas unitarias](https://github.com/SantiagoJSalas/inventario/actions/workflows/tests.yml/badge.svg)
+
 Proyecto académico para el curso **Gestión en Pruebas de Software**.
 
 Implementa un sistema de inventario sencillo en Java para demostrar cómo GitHub
@@ -29,3 +31,9 @@ mvn -B test
 ```
 
 El resultado esperado es `BUILD SUCCESS`.
+
+## Integración continua
+
+El workflow `.github/workflows/tests.yml` ejecuta automáticamente las pruebas
+en cada `push` y en cada Pull Request dirigido a `main`. Los resultados se
+pueden consultar en la pestaña **Actions** del repositorio.
