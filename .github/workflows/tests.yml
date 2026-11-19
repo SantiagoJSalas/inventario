@@ -1,0 +1,40 @@
+# Workflow de integración continua: ejecuta las pruebas unitarias
+# automáticamente en cada push y en cada Pull Request dirigido a main.
+name: Pruebas unitarias
+
+on:
+  push:
+    branches: ['**']          # cualquier rama
+  pull_request:
+    branches: [main]          # Pull Requests que apuntan a main
+
+permissions:
+  contents: read              # el workflow solo necesita leer el código
+
+jobs:
+  pruebas:
+    name: Ejecutar pruebas JUnit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código del repositorio
+        uses: actions/checkout@v6
+
+      - name: Configurar Java 21 (Temurin) y caché de Maven
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Mostrar versiones de Java y Maven
+        run: |
+          java -version
+          mvn -v
+
+      - name: Ejecutar pruebas unitarias
+        run: mvn -B test
+
+      - name: Publicar resumen de resultados
+        if: always()
+        run: python3 .github/scripts/resumen_pruebas.py
