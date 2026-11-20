@@ -61,7 +61,7 @@ public class InventarioService {
     public long calcularValorTotalInventario() {
         long total = 0;
         for (Producto producto : productos.values()) {
-            total += producto.getPrecioUnitario()
+            total += producto.getPrecioUnitario();
         }
         return total;
     }
